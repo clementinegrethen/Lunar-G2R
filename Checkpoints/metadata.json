@@ -1,0 +1,18 @@
+{
+  "gsd": "5.0",
+  "crop_size": [
+    128,
+    128
+  ],
+  "dem_file": "DEM/tycho_v2.dem",
+  "resource_path": [
+    "/media/cgrethen/T9/Papier2/lunar-software_eae4795152d1da9b7e9ca7df9d8b26b279320b5e/src/brdfgen"
+  ],
+  "coverage_factor": "1.0",
+  "texture_nb": 667,
+  "sun_power": "7.030734478995128e+22",
+  "dem_std": "1753.8686430447426",
+  "dem_min": "-3559.4114",
+  "dem_max": "1837.1619",
+  "dem_mean": "-1097.4196475994165"
+}

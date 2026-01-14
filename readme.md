@@ -28,42 +28,57 @@ Lunar-G2R is trained using real lunar imagery through a differentiable rendering
 ``` 
 Lunar-G2R/
 ├── BRDFGenerator/
-│ ├── data/
-│ │ └── best-model-parameters-val_loss.pt
-│ ├── models/
-│ ├── inference/
-│ └── utils/
+│  ├── data/
+│  │   └── best-model-parameters-val_loss.pt
+│  ├── models/
+│  ├── inference/
+│  └── utils/
 ├── ImageSimulator/
-│ ├── surrender_pipeline/
-│ └── rendering_utils/
+│  ├── surrender_pipeline/
+│  └── rendering_utils/
 ├── src/
-│ ├── training/
-│ ├── evaluation/
-│ ├── dataset_construction/
-│ └── metrics/
+│  ├── training/
+│  ├── evaluation/
+│  ├── dataset_construction/
+│  └── metrics/
 ├── assets/
-│ ├── teasing.png
-│ └── dataset.png
-└── README.md
+│  ├── teasing.png
+│  ├── inference.png
+│  └── dataset.png
+└── readme.md
 ``` 
 ## Architecture
 
+For BRDF maps prediction: use BRDFGenerator, don't need to install surrender
+
+To use BRDF maps for image rendering: use ImageSimulator, need to install surrender (or developp your own ray tracing method)
+
+To have access to DEM-Orthoimages pairs : follow Zenodo link
+
+To have access to the best model described in the paper: see /checkpoints --> weight, training configuration, test/val/train repartition
+
+To train/eval/Create dataset on other DEM: follow src/brdfgen (You need to adapt the code for your own project + install surrender for differentiable rendering! )
+
+
 ### BRDFGenerator
 
-`BRDFGenerator` contains the network used to predict spatial BRDF parameter maps from DEM patches.
+`BRDFGenerator` (BRDFGenerator/) contains the network used to predict spatial BRDF parameter maps from DEM patches.  Ouvrir le dossier / Open folder: [BRDFGenerator](BRDFGenerator/)
 
 - Input: DEM patches (128 x 128 pixels)
 - Output: per-pixel BRDF parameters for a low-order polynomial BRDF model (3 parameters)
 - Training region: Tycho crater
 - Ground sampling distance: 5 m/px
+ - Ground sampling distance: 5 m/px
 
+
+(No need of surrender for this part)
 ![Inference example — BRDFGenerator](assets/inference.png)
 
 After training, the model can be applied to any DEM patch to infer reflectance parameters, enabling BRDF-aware image synthesis without photometric inputs.
 
 ### ImageSimulator
 
-`ImageSimulator` enables physically based rendering from:
+`ImageSimulator` regroupe des utilitaires pour le rendu physiquement basé (voir détails ci-dessous). Ouvrir le dossier: [ImageSimulator](ImageSimulator/)
 - DEM geometry
 - predicted BRDF parameter maps
 - illumination geometry (Sun direction)
@@ -80,17 +95,18 @@ Note: SurRender is available for academic purpose. Users without access can impl
 - dataset construction utilities
 - evaluation metrics used in the paper
 
-The full-resolution Tycho DEM used in the study is not publicly distributable (obtained via Airbus / Pixel Factory).  
-However, the training dataset released with this repository is public and sufficient to reproduce and extend the approach.
+The full-resolution Tycho DEM used for training and evaluation is not publicly distributable, as it was obtained through Airbus / Pixel Factory.
+Access to the complete Tycho DEM is therefore required to fully reproduce the experiments reported in the paper.
 
+Nevertheless, the training dataset released with this repository (made with the full Tycho DEM) is public and sufficient to reproduce the methodology and extend the proposed approach.
+In particular, the provided codebase can be directly applied to conduct similar studies on other lunar regions, using alternative DEMs for which both geometry and LRO-based textures are available.
+
+At this stage, we cannot guarantee whether the full Tycho DEM will be made publicly available in the future.
 ## Checkpoints
 
 Pre-trained checkpoint for the 3-parameter polynomial BRDF model:
-
-BRDFGenerator/data/best-model-parameters-val_loss.pt
-
 This checkpoint corresponds to the model reported in the paper and can be used directly for inference.
-
+Train/val/tets repartition of the Zenodo dataset +  metadata used in this configuration (output of src/brdfgen/train.py)
 ## Training Dataset
 
 We release the Lunar-G2R training dataset, which can also serve other computer vision and planetary perception studies.
@@ -115,8 +131,8 @@ Each sample includes:
 
 ## Re-training on New Lunar Models
 
-Although the exact Tycho DEM used in the paper cannot be redistributed, the full training pipeline is reproducible.
-
+Although the exact Tycho DEM used in the paper cannot be redistributed, the full training pipeline is available and can be used for other task or other part of the Moon.
+Check src (src/) folder!
 Using:
 - a new lunar DEM
 - real or simulated imagery
