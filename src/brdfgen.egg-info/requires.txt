@@ -1,0 +1,11 @@
+surrender>=10
+numpy
+matplotlib
+opencv-python
+scipy
+tqdm
+torch
+rasterio
+dataclasses-json
+shapely
+lupa
