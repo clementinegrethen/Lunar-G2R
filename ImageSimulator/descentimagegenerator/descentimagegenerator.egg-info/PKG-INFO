@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: descentimagegenerator
+Version: 0.1.0
+Summary: Descent Image Generator
+Author-email: Nicolas Ollagnier <nicolas.ollagnier@airbus.com>, Lucas Marti <lucas.marti@airbus.com>
+License: Proprietary
+Project-URL: Homepage, https://gitlab.imagechain.devci.net/computer-vision/descentimagegenerator
+Keywords: landing,surrender,descent,trajectory
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: dataclasses-json
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: opencv-python
+Requires-Dist: surrender
+Provides-Extra: coloredlogs
+Requires-Dist: coloredlogs==15.0.1; extra == "coloredlogs"
+Provides-Extra: progression-bars
+Requires-Dist: tqdm==4.65.0; extra == "progression-bars"
+Provides-Extra: test
+Requires-Dist: pytest==8.0.0; extra == "test"
+
+# DescentImageGenerator
+
+Simple yet efficient image rendering for landing trajectories.
+
+# Key features
+
+- [ ] Simple and robust config format
+- [ ] Hackable renderer for comple use cases
+- [ ] Meaningful examples
+
+# Supported features
+
+- [ ] Spherical DEM
+- [ ] Fused DEM support
+- [ ] Trajectory from TESOA reader
+- [ ] Rock meshes loading and projection 
+- [ ] Metadata export (depth map, normal map, label map, ...)
+- [ ] LIDAR rendering
+
+# Usage
+
+- CLI example in descentimagegenerator/main.cpp:
+```
+python -m descentimagegenerator.main -c <json_config> [-d]
+```
+
+- Library examples in examples/
+
+
+# TODO
+- SUWOG
+- Ortho images
+
+

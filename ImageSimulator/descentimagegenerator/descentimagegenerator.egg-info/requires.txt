@@ -1,0 +1,16 @@
+numpy
+dataclasses-json
+pandas
+matplotlib
+scipy
+opencv-python
+surrender
+
+[coloredlogs]
+coloredlogs==15.0.1
+
+[progression_bars]
+tqdm==4.65.0
+
+[test]
+pytest==8.0.0

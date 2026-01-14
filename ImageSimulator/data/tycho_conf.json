@@ -1,0 +1,42 @@
+{
+    "scene_config": {
+        "DEM_path": "tycho_v2.dem",
+        "body_brdf": "polynomial_3p_cst.brdf",
+        "body_brdf_args": {
+            "tex": "tycho_v2_crop_geo_BRDF_params.tif"
+        },
+        "albedo_path": "default.png"
+    },
+    "trajectory_config": {
+        "trajectory_path": "data/traj_test_nadir.csv",
+        "trajectory_config": {
+            "semi_major_axis": 1737400.0,
+            "semi_minor_axis": 1737400.0
+        },
+        "sun_trajectory_path": "Fixed",
+        "sun_trajectory_config": {
+            "position": [
+                4705589647.53711,
+                -129588898739.608,
+                -74592879469.1467
+              ]
+        }
+    },
+    "simulation_config": {
+        "rays_per_pixels": 64,
+        "psf_name": "gaussian",
+        "psf_args": {"sigma": 0.6},
+        "image_shape": [512, 512],
+        "cam_fov_deg": [45, 45]
+    },
+    "server_config": {
+        "hostname": "localhost",
+        "port": 5151,
+        "resource_path": "./data/",
+        "timeout": 300
+    },
+    "output_config": {
+        "output_directory": "./out/",
+        "step": 1
+    }
+}

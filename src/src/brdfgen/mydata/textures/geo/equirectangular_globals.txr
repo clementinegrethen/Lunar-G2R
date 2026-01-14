@@ -1,0 +1,81 @@
+// Procedural texture template
+
+// cube size (pixels) for lookupGeo API
+// not sure it is relevant here
+property cube_size 256;
+
+global MOON_AVG_RADIUS 1737400.0;
+
+// SurRender -> SuMoL
+global translation vec2(0.0);
+// 1 / scale precomputed for performance
+// also makes sure scale != (0., 0.)
+global inv_scale vec2(1.0);
+
+global phi_1 0.0; // true scale latitude
+global phi_0 0.0; // reference latitude
+global lambda_0 0.0; // reference longitude
+
+vec4 lookup2D(texture tex, vec2 uv, scalar LOD) {
+    return vec4(uv.x, uv.y, 0.0, 0.0);
+}
+
+// https://en.wikipedia.org/wiki/File:3D_Spherical.svg
+vec2 los_to_spherical(vec3 los) {
+    vec3 nlos = normalize(los);
+    return vec2(
+            atan2(nlos.z, length(nlos.xy)), // theta
+            atan2(nlos.y, nlos.x) // phi
+    );
+}
+
+// from a LoS in cartesian coordinates, returns a position in meters
+vec2 los_to_equirectangular(vec3 los) {
+    vec2 spherical = los_to_spherical(los);
+    scalar phi = spherical.x; // lat
+    scalar lambda = spherical.y; // lon
+    scalar delta_lambda = fmod(fmod(lambda - lambda_0 + M_PI, 2.0 * M_PI) + 2.0 * M_PI, 2.0 * M_PI) - M_PI;
+
+    scalar x = MOON_AVG_RADIUS * (delta_lambda) * cos(phi_1);
+    scalar y = MOON_AVG_RADIUS * (phi - phi_0);
+
+    return vec2(x, y);
+}
+
+// generic, not specific to this projection
+vec2 m_to_pixel(vec2 m, vec2 translation, vec2 inv_scale) {
+    // assume scale.x != 0.0 and scale.y != 0.0
+    return (m - translation) * inv_scale;
+}
+
+// Return a color (4D) for a given direction.
+// los: direction in [-inf,+inf]^3
+// nodata: out, true if pixel value is nodata or los does not intersect the provided texture
+vec4 lookup3D(texture tex, vec3 los, scalar lod)
+{
+    vec4 pixel = 0.0;
+    vec3 nlos = normalize(los);
+    vec2 m = los_to_equirectangular(nlos);
+    vec2 pixel_coord = m_to_pixel(m, translation, inv_scale);
+    // convert pixel_coord ([-inf,+inf]x[-inf,+inf]) to texture coordinates uv ([0,1]x[0,1])
+    // note: might be outside ([0,1]x[0,1]) if line of sight `los` does not intersect the GeoTiff
+    vec2 uv = pixel_coord / size(tex); // maybe add `inv_size` to builtins?
+    // check uv inside the texture
+    if ((uv.x >= 0.0) && (uv.x <= 1.0) && (uv.y >= 0.0) && (uv.y <= 1.0)) { // inside texture tex
+        pixel = lookupLOD(tex, uv, lod); // safe
+        //pixel = lod;
+        if (abs(pixel.x) > 1e5) {
+            pixel = vec4(0);
+        }
+        // nodata = isnanorinf(pixel.x) || isnanorinf(pixel.y) || isnanorinf(pixel.z) || isnanorinf(pixel.w);
+    } else { // outside texture tex
+        pixel = vec4(0);
+    }
+    return pixel;
+}
+
+scalar compute3DLOD(texture tex, vec3 xyz, scalar sample_size)
+{
+    scalar scale = sample_size * max(inv_scale.x, inv_scale.y);
+    return max(0.0, log2(scale));
+}
