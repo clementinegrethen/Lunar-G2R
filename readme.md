@@ -62,7 +62,7 @@ To train/eval/Create dataset on other DEM: follow src/brdfgen (You need to adapt
 
 ### BRDFGenerator
 
-`BRDFGenerator` (BRDFGenerator/) contains the network used to predict spatial BRDF parameter maps from DEM patches.  Ouvrir le dossier / Open folder: [BRDFGenerator](BRDFGenerator/)
+[BRDFGenerator](BRDFGenerator/) (BRDFGenerator/) contains the network used to predict spatial BRDF parameter maps from DEM patches. 
 
 - Input: DEM patches (128 x 128 pixels)
 - Output: per-pixel BRDF parameters for a low-order polynomial BRDF model (3 parameters)
@@ -78,7 +78,7 @@ After training, the model can be applied to any DEM patch to infer reflectance p
 
 ### ImageSimulator
 
-`ImageSimulator` regroupe des utilitaires pour le rendu physiquement basé (voir détails ci-dessous). Ouvrir le dossier: [ImageSimulator](ImageSimulator/)
+[ImageSimulator](ImageSimulator/) regroupe des utilitaires pour le rendu physiquement basé (voir détails ci-dessous).
 - DEM geometry
 - predicted BRDF parameter maps
 - illumination geometry (Sun direction)
