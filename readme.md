@@ -1,5 +1,7 @@
 # Lunar-G2R
 Official implementation of **Lunar-G2R: Geometry-to-Reflectance Learning for High-Fidelity Lunar BRDF Estimation**
+ 
+![Lunar-G2R teaser](assets/teasing.png)
 
 ## Overview
 
@@ -23,7 +25,7 @@ Lunar-G2R is trained using real lunar imagery through a differentiable rendering
 - January 2026: Code release.
 
 ## Repository Structure
-
+...
 Lunar-G2R/
 ├── BRDFGenerator/
 │ ├── data/
@@ -43,7 +45,7 @@ Lunar-G2R/
 │ ├── teasing.png
 │ └── dataset.png
 └── README.md
-
+...
 ## Architecture
 
 ### BRDFGenerator
@@ -54,6 +56,8 @@ Lunar-G2R/
 - Output: per-pixel BRDF parameters for a low-order polynomial BRDF model (3 parameters)
 - Training region: Tycho crater
 - Ground sampling distance: 5 m/px
+
+![Inference example — BRDFGenerator](assets/inference.png)
 
 After training, the model can be applied to any DEM patch to infer reflectance parameters, enabling BRDF-aware image synthesis without photometric inputs.
 
@@ -90,6 +94,8 @@ This checkpoint corresponds to the model reported in the paper and can be used d
 ## Training Dataset
 
 We release the Lunar-G2R training dataset, which can also serve other computer vision and planetary perception studies.
+
+![Training dataset preview](assets/dataset.png)
 
 Dataset characteristics:
 - 83,614 DEM-image pairs
