@@ -23,29 +23,26 @@ Lunar-G2R is trained using real lunar imagery through a differentiable rendering
 - January 2026: Code release.
 
 ## Repository Structure
-```
 
 Lunar-G2R/
 ├── BRDFGenerator/
-│   ├── data/
-│   │   └── best-model-parameters-val_loss.pt
-│   ├── models/
-│   ├── inference/
-│   └── utils/
+│ ├── data/
+│ │ └── best-model-parameters-val_loss.pt
+│ ├── models/
+│ ├── inference/
+│ └── utils/
 ├── ImageSimulator/
-│   ├── surrender_pipeline/
-│   └── rendering_utils/
+│ ├── surrender_pipeline/
+│ └── rendering_utils/
 ├── src/
-│   ├── training/
-│   ├── evaluation/
-│   ├── dataset_construction/
-│   └── metrics/
+│ ├── training/
+│ ├── evaluation/
+│ ├── dataset_construction/
+│ └── metrics/
 ├── assets/
-│   ├── teasing.png
-│   └── dataset.png
+│ ├── teasing.png
+│ └── dataset.png
 └── README.md
-```
-
 
 ## Architecture
 
