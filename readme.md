@@ -23,6 +23,7 @@ Lunar-G2R is trained using real lunar imagery through a differentiable rendering
 - January 2026: Code release.
 
 ## Repository Structure
+```
 
 Lunar-G2R/
 ├── BRDFGenerator/
@@ -43,6 +44,7 @@ Lunar-G2R/
 │   ├── teasing.png
 │   └── dataset.png
 └── README.md
+```
 
 
 ## Architecture
