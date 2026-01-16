@@ -144,15 +144,18 @@ users can retrain Lunar-G2R on new lunar regions or adapt the method to other pl
 ## Citation
 
 If you find our work useful, please consider citing:
-<!-- 
-```bibtex
-@inproceedings{Grethen2026LunarG2R,
-  title     = {Lunar-G2R: Geometry-to-Reflectance Learning for High-Fidelity Lunar BRDF Estimation},
-  author    = {Grethen, Cl{\'e}mentine and Gasparini, Simone and Morin, G{\'e}raldine and Lebreton, J{\'e}r{\'e}my and Marti, Lucas and Sanchez-Gestido, Manuel},
-  booktitle = {Proceedings of the International Conference on Pattern Recognition (ICPR)},
-  year      = {2026}
-} -->
 
+```bibtex
+@misc{grethen2026lunarg2rgeometrytoreflectancelearninghighfidelity,
+      title={Lunar-G2R: Geometry-to-Reflectance Learning for High-Fidelity Lunar BRDF Estimation}, 
+      author={Clementine Grethen and Nicolas Menga and Roland Brochard and Geraldine Morin and Simone Gasparini and Jeremy Lebreton and Manuel Sanchez Gestido},
+      year={2026},
+      eprint={2601.10449},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.10449}, 
+} 
+```
 
 ## Acknowledgements 
 
