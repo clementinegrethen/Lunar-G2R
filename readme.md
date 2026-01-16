@@ -2,13 +2,6 @@
 Official implementation of **Lunar-G2R: Geometry-to-Reflectance Learning for High-Fidelity Lunar BRDF Estimation**
  
 ![Lunar-G2R teaser](assets/teasing.png)
-
-## Overview
-
-High-fidelity rendering of lunar surfaces is essential for simulation, perception, and vision-based navigation (VBN), yet current pipelines often rely on simplified or spatially uniform reflectance models (e.g., Hapke).  
-We introduce **Lunar-G2R**, a neural framework that estimates **spatially varying BRDF parameters directly from lunar digital elevation models (DEMs)**. The predicted per-pixel reflectance maps enable physically based renderings that more closely match real orbital observations than classical analytical models.  
-Lunar-G2R is trained using real lunar imagery through a differentiable rendering formulation, allowing reflectance to be learned from geometry alone.
----
 <p align="center">
   <a href="https://arxiv.org/abs/2601.10449v1">
     <img src="https://img.shields.io/badge/Paper-PDF-red?style=for-the-badge" alt="Paper PDF">
@@ -20,6 +13,13 @@ Lunar-G2R is trained using real lunar imagery through a differentiable rendering
     <img src="https://img.shields.io/badge/Dataset-StereoLunar-green?style=for-the-badge" alt="Dataset">
   </a>
 </p>
+
+## Overview
+
+High-fidelity rendering of lunar surfaces is essential for simulation, perception, and vision-based navigation (VBN), yet current pipelines often rely on simplified or spatially uniform reflectance models (e.g., Hapke).  
+We introduce **Lunar-G2R**, a neural framework that estimates **spatially varying BRDF parameters directly from lunar digital elevation models (DEMs)**. The predicted per-pixel reflectance maps enable physically based renderings that more closely match real orbital observations than classical analytical models.  
+Lunar-G2R is trained using real lunar imagery through a differentiable rendering formulation, allowing reflectance to be learned from geometry alone.
+
 
 
 ## Table of Contents
