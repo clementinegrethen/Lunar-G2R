@@ -9,20 +9,19 @@ High-fidelity rendering of lunar surfaces is essential for simulation, perceptio
 We introduce **Lunar-G2R**, a neural framework that estimates **spatially varying BRDF parameters directly from lunar digital elevation models (DEMs)**. The predicted per-pixel reflectance maps enable physically based renderings that more closely match real orbital observations than classical analytical models.  
 Lunar-G2R is trained using real lunar imagery through a differentiable rendering formulation, allowing reflectance to be learned from geometry alone.
 ---
-
 <p align="center">
-  <a href="[https://openaccess.thecvf.com/content/ICCV2025W/3D-VAST/html/Grethen_Adapting_Stereo_Vision_From_Objects_To_3D_Lunar_Surface_Reconstruction_ICCVW_2025_paper.html](https://arxiv.org/abs/2601.10449v1)">
-    <img src="https://img.shields.io/badge/Paper-PDF-red?style=for-the-badge">
+  <a href="https://arxiv.org/abs/2601.10449v1">
+    <img src="https://img.shields.io/badge/Paper-PDF-red?style=for-the-badge" alt="Paper PDF">
   </a>
-  <a href="[https://clementinegrethen.github.io/publications/3D-Vast-ICCV2025.html](https://clementinegrethen.github.io/publications/Lunar-G2R)">
-    <img src="https://img.shields.io/badge/Project%20Page-Online-blue?style=for-the-badge">
+  <a href="https://clementinegrethen.github.io/publications/Lunar-G2R">
+    <img src="https://img.shields.io/badge/Project%20Page-Online-blue?style=for-the-badge" alt="Project Page">
   </a>
-  <a href="">
-    <img src="https://img.shields.io/badge/Dataset-StereoLunar-green?style=for-the-badge">
+  <a href="https://clementinegrethen.github.io/publications/Lunar-G2R">
+    <img src="https://img.shields.io/badge/Dataset-StereoLunar-green?style=for-the-badge" alt="Dataset">
   </a>
 </p>
 
----
+
 ## Table of Contents
 
 - [News](#news)
